@@ -35,11 +35,24 @@ jobs:
         with:
           name: thesis-pdf
 
+      
       - name: Prepare for Pages
         run: |
           mkdir deploy
           mv thesis_ntentas.pdf deploy/
           echo "thesis.ntentas.com" > deploy/CNAME
+          cat <<EOF > deploy/index.html
+            <!DOCTYPE html>
+            <html>
+              <head>
+                <meta http-equiv="refresh" content="0; url=thesis_ntentas.pdf" />
+                <title>Redirecting…</title>
+              </head>
+              <body>
+                <p>Redirecting to <a href="thesis_ntentas.pdf">thesis_ntentas.pdf</a></p>
+              </body>
+            </html>
+          EOF
 
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
