@@ -1,23 +1,27 @@
-name: Build & Deploy Thesis (Makefile-based)
+name: Build & Deploy Thesis to Github Pages
 
 on:
   push:
     branches: [main]
 
+permissions:
+  contents: write
+
 jobs:
   build:
-    name: Build PDF with Makefile
+    name: Build PDF
     runs-on: ubuntu-latest
     container: ghcr.io/xu-cheng/latex-action:latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout source
+        uses: actions/checkout@v3
 
-      - name: Run Makefile
+      - name: Compile with Makefile
         run: make
 
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
         with:
           name: thesis-pdf
           path: thesis_ntentas.pdf
@@ -29,11 +33,11 @@ jobs:
 
     steps:
       - name: Download PDF artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: thesis-pdf
 
-      - name: Prepare deploy dir
+      - name: Prepare deployment directory
         run: |
           mkdir deploy
           mv thesis_ntentas.pdf deploy/
