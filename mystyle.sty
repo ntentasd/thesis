@@ -134,7 +134,8 @@
 
 
 \usepackage{fancyhdr}
-\setlength{\headheight}{15.2pt}
+\setlength{\headheight}{27.38203pt}
+\addtolength{\topmargin}{-12pt}
 \pagestyle{fancy}
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\headsep}{15pt}
@@ -142,8 +143,11 @@
 % \fancyfoot[CO,CE]{\small{Ενσωμάτωση μηχανισμών caching, \\ observability και self-healing στην υποδομή διαχείρισης \\ δεδομένων ΙοΤ της πλατφόρμας Nostradamus}}
 % \fancyfoot[RO, LE]{Ντέντας Δ.}
 
+\fancyhf{}
 \fancyfoot[LO] {\thepage}
-\fancyfoot[CO]{\small{Ενσωμάτωση μηχανισμών caching, \\ observability και self-healing στην υποδομή διαχείρισης \\ δεδομένων ΙοΤ της πλατφόρμας Nostradamus}}
+\makeatletter
+\fancyfoot[CO]{\small \@title}
+\makeatother
 \fancyfoot[RO]{Ντέντας Δ.}
 
 \usepackage{tikz}
