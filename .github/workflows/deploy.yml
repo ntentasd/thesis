@@ -19,16 +19,13 @@ jobs:
         with:
           root_file: thesis_ntentas.tex
           latexmk_use_xelatex: true
-          pre_compile: |
-            latexmk -C
-            apt-get update
-            DEBIAN_FRONTEND=noninteractive apt-get install -y \
-              fonts-gfs-didot \
-              fonts-gfs-neohellenic \
-              fonts-dejavu \
-              fonts-dejavu-core \
-              fonts-freefont-otf
-            fc-cache -fv
+          pre_compile: latexmk -C
+          extra_fonts: |
+            fonts/*.otf
+            fonts/*.ttf
+          extra_system_packages: |
+            fontconfig
+            ttf-dejavu
           args: -file-line-error -interaction=nonstopmode
 
       - name: Upload PDF
