@@ -62,6 +62,13 @@
 διατήρησης του \textit{quorum}), ενώ τα υπόλοιπα 2 \textit{virtual machines},
 με περισσότερους υπολογιστικούς πόρους, καθιστούν τα \textit{worker nodes}.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{k8s-cluster}
+	\caption{Kubernetes cluster με δύο κόμβους επιπέδου ελέγχου και τρεις κόμβους εργασίας}
+	\label{fig:k8s-cluster}
+\end{figure}
+
 \section{Ροή δεδομένων σε πραγματικό χρόνο}
 
 \subsection{Πηγές ροής δεδομένων}
@@ -110,7 +117,7 @@
 εξοικονομεί ενέργεια και επιτρέπει αποδοτική μετάδοση δεδομένων. Για την
 εισαγωγή των μηνυμάτων αυτής της μορφής στο \textit{Kafka} απαιτείται η ύπαρξη
 μηχανισμού γεφύρωσης. Στο πλαίσιο αυτό, αξιοποιήθηκε αρχικά το \textit{Strimzi
-MQTT bridge}.
+	MQTT bridge}.
 
 Ωστόσο, η ενσωματωμένη υλοποίηση του \textit{Strimzi} δεν υποστηρίζει ασφαλή
 μεταφορά μέσω \textit{MQTTs}, γεγονός που αποτελεί κρίσιμο ζήτημα για την
