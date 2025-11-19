@@ -27,10 +27,12 @@
 % Ελληνικό Hyphenation, αφαιρέστε το αν δεν έχετε εγκατεστημένο το xgreek.
 \usepackage{xgreek}
 
-% Γραμματοσειρά
+% Γραμματοσειρά (χρησιμοποιούμε ένα fake italic ώστε οι τονισμένοι ελληνικοί
+% χαρακτήρες να συνεχίσουν να αποδίδονται σωστά)
 \setmainfont[
 	Mapping=tex-text,
-	ItalicFont={TeX Gyre Termes Italic}
+	ItalicFont={GFS Didot},
+	ItalicFeatures={FakeSlant=0.2}
 ]{GFS Didot}
 \setsansfont[Mapping=tex-text]{DejaVu Sans}
 \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
