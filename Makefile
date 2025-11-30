@@ -1,4 +1,4 @@
-TEX=pdflatex
+TEX=xelatex
 BIB=bibtex
 MAIN=thesis_ntentas
 
@@ -14,4 +14,4 @@ cleanall:
 	@latexmk -C
 
 watch:
-	@latexmk -xelatex -bibtex -pvc -interaction=nonstopmode -file-line-error -f $(MAIN).tex
+	@latexmk -$(TEX) -bibtex -pvc -interaction=nonstopmode -file-line-error -f $(MAIN).tex
