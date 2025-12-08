@@ -12,3 +12,8 @@
 *.toc
 *.xdv
 *.pdf
+
+# LaTeX svg package artifacts
+svg-inkscape/
+*_svg-tex.pdf
+*_svg-tex.pdf_tex

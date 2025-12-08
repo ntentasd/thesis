@@ -132,6 +132,21 @@ auditability και την αναπαραγωγή σφαλμάτων.
 δρομολογείται προς τα κατάλληλα topics και pipelines για περαιτέρω επεξεργασία,
 όπως περιγράφεται στις επόμενες υποενότητες.
 
+Η αρχιτεκτονική εισαγωγής δεδομένων (Data Ingestion), από τη στρώση παραγωγής
+των δεδομένων (αισθητήρες πεδίου) μέχρι τη συλλογή τους στο αντίστοιχο Kafka
+topic μέσω της γέφυρας \textit{MQTT-Kafka} (MQTT Kafka Bridge), και εν
+συνεχεία την καταχώριση στη βάση δεδομένων μοντελοποιείται στο ακόλουθο
+διάγραμμα:
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth]{%
+        \includesvg[width=1.2\textwidth]{data-stack.svg}%
+    }
+    \caption{Αρχιτεκτονική υποδομής δεδομένων}
+    \label{fig:data-stack}
+\end{figure}
+
 \subsection{Τεχνολογίες Streaming}
 
 Στην προηγούμενη ενότητα παρουσιάστηκε το \textit{Apache Kafka} ως το βασικό
@@ -475,6 +490,19 @@ reference implementation πάνω στο API, διευκολύνοντας τη�
 εμπλουτισμένα γραφήματα μέχρι real-time feeds, χωρίς να απαιτούνται αλλαγές στο
 υπόβαθρο της πλατφόρμας.
 
+Η δομή του επιπέδου υπηρεσιών, συμπεριλαμβανομένης της ροής δεδομένων μεταξύ
+του \textit{API Gateway}, του \textit{caching layer} και της βάσης δεδομένων,
+παρουσιάζεται στο ακόλουθο σχήμα:
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth]{%
+        \includesvg[width=1.2\textwidth]{api-stack.svg}%
+    }
+    \caption{Αρχιτεκτονική του επιπέδου υπηρεσιών (API Stack)}
+    \label{fig:api-stack-arch}
+\end{figure}
+
 \section{Παρατηρησιμότητα}
 
 Η παρατηρησιμότητα αποτελεί θεμελιώδες χαρακτηριστικό της πλατφόρμας, καθώς
@@ -483,6 +511,18 @@ reference implementation πάνω στο API, διευκολύνοντας τη�
 παρούσα ενότητα αναλύει τους τρεις βασικούς άξονες παρατηρησιμότητας που
 υλοποιήθηκαν: \textit{μετρικές}, \textit{καταγραφές} και
 \textit{ιχνηλασιμότητα}.
+
+Η αρχιτεκτονική παρατηρησιμότητας που χρησιμοποιήθηκε για την ενίσχυση της
+πλατφόρμας \textit{Nostradamus} απεικονίζεται στο παρακάτω διάγραμμα:
+
+\begin{figure}[H]
+    \centering
+    \makebox[\textwidth]{%
+        \includesvg[width=1.2\textwidth]{observability-stack.svg}%
+    }
+    \caption{Αρχιτεκτονική υποδομής παρατηρησιμότητας}
+    \label{fig:observability-stack}
+\end{figure}
 
 \subsection{Μετρικές και SLI παρακολούθησης}
 
