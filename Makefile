@@ -5,7 +5,7 @@ MAIN=thesis_ntentas
 .PHONY: all clean cleanall watch
 
 all:
-	@latexmk -xelatex -shell-escape -bibtex -interaction=nonstopmode -file-line-error -f $(MAIN).tex
+	@latexmk -$(TEX) -shell-escape -bibtex -interaction=nonstopmode -file-line-error -f $(MAIN).tex
 
 clean:
 	@latexmk -c
