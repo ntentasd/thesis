@@ -1,0 +1,21 @@
+\chapter*{Περίληψη}
+\addcontentsline{toc}{chapter}{Περίληψη}
+
+Η παρούσα διπλωματική εργασία εστιάζει στον σχεδιασμό, την υλοποίηση και την πειραματική αξιολόγηση μιας ανθεκτικής, cloud-native υποδομής δεδομένων IoT για την πλατφόρμα γεωργίας ακριβείας Nostradamus. Με δεδομένη την κρισιμότητα των Κυβερνοφυσικών Συστημάτων (CPS) στον αγροδιατροφικό τομέα, η έρευνα επικεντρώνεται στην ενσωμάτωση τριών κρίσιμων πυλώνων: της προσωρινής αποθήκευσης (caching), της παρατηρησιμότητας (observability) και των μηχανισμών αυτοΐασης (self-healing).
+
+Η αρχιτεκτονική της πλατφόρμας βασίζεται στο Kubernetes και αξιοποιεί ένα σύγχρονο data stack αποτελούμενο από Apache Kafka για τη διαχείριση ροών, ScyllaDB για την αποθήκευση χρονοσειρών και Arroyo για την επεξεργασία streaming δεδομένων. Η παρατηρησιμότητα του συστήματος ενισχύθηκε μέσω ενός πλήρους stack (Prometheus, Grafana, Loki, Tempo), το οποίο επέτρεψε την ιχνηλάτηση (tracing) των αιτημάτων από το API layer έως το επίπεδο αποθήκευσης, διευκολύνοντας την ανάλυση βαθύτερης αιτίας (Root Cause Analysis).
+
+Η πειραματική διαδικασία επικεντρώθηκε στην αξιολόγηση εναλλάξιμων cache drivers (Valkey, Memcached) υπό ρεαλιστικό φόρτο 350 RPS. Τα αποτελέσματα ανέδειξαν ένα κρίσιμο trade-off: ενώ το Memcached πέτυχε χαμηλότερη μέση καθυστέρηση (P95 read στα 486 μs), το Valkey επέδειξε ανώτερη σταθερότητα στα υψηλά percentiles (P99), διατηρώντας το tail latency κάτω από τα 5.6 ms ακόμη και σε συνθήκες υποβέλτιστης πυκνότητας δεδομένων (data granularity). Επιπλέον, διαπιστώθηκε ότι η αυξημένη συχνότητα μετρήσεων χωρίς αντίστοιχη πληροφοριακή αξία μπορεί να επιβαρύνει το cache layer έως και 56\%.
+
+Τα συμπεράσματα της εργασίας τεκμηριώνουν ότι η συνδυαστική χρήση stateful επεξεργασίας ροών και προηγμένης παρατηρησιμότητας επιτρέπει την ανάπτυξη συστημάτων που όχι μόνο αποδίδουν σε υψηλή κλίμακα, αλλά διαθέτουν την απαιτούμενη διαγνωστική ικανότητα για την υποστήριξη στρατηγικών self-healing και multi-cloud ανάπτυξης.
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+This master thesis investigates the design, implementation, and experimental evaluation of a resilient, cloud-native IoT data infrastructure for the precision agriculture platform Nostradamus. Given the critical nature of Cyber-Physical Systems (CPS) in the agrifood sector, this research focuses on the integration of three key pillars: distributed caching, full-stack observability, and self-healing mechanisms.
+
+The platform architecture is built on Kubernetes, utilizing a modern data stack comprising Apache Kafka for stream management, ScyllaDB for time-series storage, and Arroyo for real-time stream processing. System-level observability was enhanced through a comprehensive stack (Prometheus, Grafana, Loki, Tempo), enabling end-to-end request tracing and facilitating rapid Root Cause Analysis (RCA) across the infrastructure.
+
+Experimental evaluation focused on the comparative performance of interchangeable cache drivers (Valkey, Memcached) under a realistic load of 350 RPS. The results revealed a significant architectural trade-off: while Memcached provided lower average latency (P95 read at 486 μs), Valkey demonstrated superior stability in higher percentiles (P99), maintaining tail latency below 5.6 ms even under suboptimal data granularity conditions. Furthermore, it was observed that excessive measurement frequency without proportional information value could increase cache write latency by up to 56\%.
+
+The findings of this thesis demonstrate that the synergy of stateful stream processing and advanced observability enables the development of IoT infrastructures that are not only performant at scale but also possess the diagnostic depth required to support autonomous recovery and multi-cloud resilience strategies.
